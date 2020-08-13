@@ -115,6 +115,35 @@ void test_class_size()
 };
 
 
+// 编码风格
+// 1. 类、结构体、枚举、联合体、作用域、函数 - 大驼峰
+// 2. 全局变量、局部变量、函数参数、成员变量 - 小驼峰
+// 3. 宏、常量、枚举值、goto标签 - 全大写，下滑线分割
+// 4. 全局变量应增加 'g_' 前缀，静态变量命名不需要加特殊前缀
+// 5. 行宽不超过 120 个字符
+// 6. 使用空格进行缩进，每次缩进4个空格
+// 7. 类访问控制块的声明依次序是 public:,protected:,private:，缩进和 class 关键字对齐
+// 8. 不要在头文件中或者#include之前使用using导入命名空间
+
+
+// 为避免隐式转换，将单参数构造函数声明为explicit
+class ExplicitTest {
+
+public:
+	ExplicitTest(const std::string& name) : name(name)
+	{
+	}
+private:
+	std::string name;
+};
+
+void ExplicitDemo(const ExplicitTest &ex) {}
+
+void test_explicit() {
+	std::string test = "test";
+	//ExplicitDemo(test); // 添加 explicit 修饰，编译不通过，test是string类型 与 ExplicitTest 不匹配
+	ExplicitDemo(test); // 去掉 explicit 修饰 编译通过 可以执行  让人疑惑： string类型居然可以传入ExplicitTest类型中
+}
 
 int main()
 {
