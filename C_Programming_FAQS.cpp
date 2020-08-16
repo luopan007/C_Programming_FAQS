@@ -186,7 +186,16 @@ funcPtr fp1, fp2; // 声明两个函数指针
 
 // 字符串字面量
 char aa[] = "string literal"; // 数组初始化方式
-const char *paa = "string literal"; // 指针初始化方式
+const char *paa = "string literal"; // 指针初始化方式3
+
+
+// 第二章: 结构体、联合和枚举
+struct x1 {};
+typedef struct {} x2;
+// x1 只是一个结构标签
+// x2 是类型定义
+// 类型定义之后的,都可以当成类型使用,比如:
+x2 b;
 
 
 
