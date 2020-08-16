@@ -145,9 +145,14 @@ void test_explicit() {
 	ExplicitDemo(test); // 去掉 explicit 修饰 编译通过 可以执行  让人疑惑： string类型居然可以传入ExplicitTest类型中
 }
 
+// 错误的指针声明 - 此处指针是 p, *p 是指针的解引用
+// char *p;
+// *p = malloc(10);
+
 int main()
 {
 	test_class_size();
+	return 0;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
