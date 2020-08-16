@@ -233,7 +233,7 @@ void test_template_sum() {
 	std::cout << "1+2+...+100 = " << Sum<100>::N << std::endl;
 }
 
-// STL
+// STL : vector/list/deque
 #include <vector>
 #include <list>
 #include <queue>
@@ -288,11 +288,18 @@ void test_STL() {
 	}
 }
 
+// STL - map
+#include <map>
+
+void test_map() {
+}
+
 int main()
 {
 	test_class_size();
 	test_template_sum();
 	test_STL();
+	test_map();
 	return 0;
 }
 
