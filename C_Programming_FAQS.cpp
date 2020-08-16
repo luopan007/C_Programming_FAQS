@@ -202,10 +202,42 @@ x2 b;
 // 后缀 ++ 和 -- 操作符本质上是一元操作符,因此, ++ 和 -- 优先级比 * 高
 
 
+// 泛型编程
+template<class T>
+T max(T t1, T t2) {
+	return t1 > t2 ? t1 : t2;
+}
+
+template<class T>
+class TemplateTest {
+public:
+	T max(T t1, T t2) {
+		return t1 > t2 ? t1 : t2;
+	}
+};
+
+// 利用泛型计算和
+template<int n>
+struct Sum {
+	enum Value { N = Sum<n - 1>::N + n };
+};
+
+template<>
+struct Sum<1> {
+	enum Value { N = 1 };
+};
+
+// 该函数的耗时为 0
+// 泛型是在编译器完成的
+void test_template_sum() {
+	std::cout << "1+2+...+100 = " << Sum<100>::N << std::endl;
+}
+
 
 int main()
 {
 	test_class_size();
+	test_template_sum();
 	return 0;
 }
 
