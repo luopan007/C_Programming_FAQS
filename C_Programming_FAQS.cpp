@@ -180,7 +180,13 @@ struct Node {
 
 typedef struct Node *NodePtr;
 
+// typedef 与函数指针
+typedef int(*funcPtr)(); // 定义了一个类型funcPtr, 表示指向返回值为int型(参数未指明)的函数的指针
+funcPtr fp1, fp2; // 声明两个函数指针
 
+// 字符串字面量
+char aa[] = "string literal"; // 数组初始化方式
+const char *paa = "string literal"; // 指针初始化方式
 
 
 
