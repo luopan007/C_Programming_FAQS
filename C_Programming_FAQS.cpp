@@ -306,7 +306,7 @@ void test_map() {
 
 	// 3. 使用的for_each打印 - 找不到 cout 标识符
 
-	// 4. 采用迭代器打印
+	// 4. 采用迭代器查找指定key
 	map<string, double>::iterator iter;
 	iter = studentScores.find("wangwu");
 	if (iter != studentScores.end()) {
@@ -314,6 +314,14 @@ void test_map() {
 	}
 	else {
 		cout << "Didn't find the key." << endl;
+	}
+
+	// 5.采用迭代器遍历
+	iter = studentScores.begin();
+	while (iter != studentScores.end())
+	{
+		cout << ":" << iter->second << endl;
+		iter++;
 	}
 
 }
