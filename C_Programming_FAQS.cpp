@@ -164,6 +164,17 @@ int f() {
 
 // 注意: extern 只对数据声明有意义,对于函数声明,仅仅是一种提示
 
+
+// typedef关键字和 #define
+typedef char* String_t;
+#define String_d char*
+String_t s1, s2;
+String_d s3, s4;
+// 在这个例子中:s1 s2 s3 军是char* 类型, s4是char类型
+
+
+
+
 int main()
 {
 	test_class_size();
