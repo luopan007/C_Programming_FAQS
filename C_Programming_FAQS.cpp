@@ -149,6 +149,21 @@ void test_explicit() {
 // char *p;
 // *p = malloc(10);
 
+// 声明和定义的区别:
+// 声明和定义的区别在于: 声明只表明变量的类型, 定义真正分配空间和赋初值
+
+// 比如: 这就是声明
+extern int i;
+extern int f();
+
+// 比如:这就是定义
+int i = 0;
+int f() {
+	return i;
+}
+
+// 注意: extern 只对数据声明有意义,对于函数声明,仅仅是一种提示
+
 int main()
 {
 	test_class_size();
