@@ -233,11 +233,66 @@ void test_template_sum() {
 	std::cout << "1+2+...+100 = " << Sum<100>::N << std::endl;
 }
 
+// STL
+#include <vector>
+#include <list>
+#include <queue>
+#include <stack>
+
+void Print_Element(int element) {
+	std::cout << element << " ";
+}
+
+void test_STL() {
+	using namespace std;
+
+	// 1.使用array初始化vector/list/deque
+	int array[] = { 1,2,3,4,5 };
+	vector<int> vector_from_array = { array, array + 4 };
+	list<int>  list_from_array = { array, array + 4 };
+	deque<int> deque_from_array = { array, array + 4 };
+
+	// 2. 使用for_each遍历vector/list/deque, 并输出元素值
+	// for_each 参数
+	// 参数1：vector/list/deque的开始元素
+	// 参数2：vector/list/deque的结束元素
+	// 参数3：处理vector/list/deque的元素的函数指针
+	for_each(vector_from_array.begin(), vector_from_array.end(), Print_Element);
+	cout << endl;
+	for_each(list_from_array.begin(), list_from_array.end(), Print_Element);
+	cout << endl;
+	for_each(deque_from_array.begin(), deque_from_array.end(), Print_Element);
+	cout << endl;
+
+	// 3.由deque创建queue/stack
+	queue<int> queue_from_deque(deque_from_array); // 队列: 先进先出
+	stack<int> stack_from_deque(deque_from_array); // 栈:   先进后出
+	
+	// 4.由数组创建priority_queue
+	priority_queue<int> priority_queue_from_array = { array, array + 4 }; // 优先队列: 按优先级
+
+	// 5.输出队列/栈和优先队列
+	while (!queue_from_deque.empty()) {
+		cout << "queue_from_deque front element: " << queue_from_deque.front() << endl; // 该函数只会返回队列头部元素,并不会移除
+		queue_from_deque.pop(); // 需要使用pop函数移除队列头部元素
+	}
+	
+	while (!stack_from_deque.empty()) {
+		cout << "stack_from_deque top element: " << stack_from_deque.top() << endl; // 该函数只会返回栈顶元素,并不会移除
+		stack_from_deque.pop(); // 需要使用pop函数移除队列头部元素
+	}
+
+	while (!priority_queue_from_array.empty()) {
+		cout << "priority_queue_from_array top element: " << priority_queue_from_array.top() << endl; // 该函数只会返回优先队列头部元素,并不会移除
+		priority_queue_from_array.pop(); // 需要使用pop函数移除队列头部元素
+	}
+}
 
 int main()
 {
 	test_class_size();
 	test_template_sum();
+	test_STL();
 	return 0;
 }
 
