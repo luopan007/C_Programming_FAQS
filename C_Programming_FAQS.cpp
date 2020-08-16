@@ -172,6 +172,15 @@ String_t s1, s2;
 String_d s3, s4;
 // 在这个例子中:s1 s2 s3 军是char* 类型, s4是char类型
 
+// 定义一个链表
+struct Node {
+	char* item;
+	struct Node *next;
+};
+
+typedef struct Node *NodePtr;
+
+
 
 
 
