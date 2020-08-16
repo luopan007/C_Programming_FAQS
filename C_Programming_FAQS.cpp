@@ -290,8 +290,32 @@ void test_STL() {
 
 // STL - map
 #include <map>
+using namespace std;
 
 void test_map() {
+	// 1. 声明一个map
+	map<string, double> studentScores;
+
+	// 2. 往map里面存储数据
+	studentScores["LiMing"] = 96.0;
+	studentScores["LiHong"] = 92.0;
+	studentScores.insert(pair<string, double>("zhangsan", 100.0));
+	studentScores.insert(pair<string, double>("lisi", 98.6));
+	studentScores.insert(pair<string, double>("wangwu", 95.0));
+	studentScores.insert(map<string, double>::value_type("wangwu", 95.0));
+
+	// 3. 使用的for_each打印 - 找不到 cout 标识符
+
+	// 4. 采用迭代器打印
+	map<string, double>::iterator iter;
+	iter = studentScores.find("wangwu");
+	if (iter != studentScores.end()) {
+		cout << "Found the score is " << iter->second << endl;
+	}
+	else {
+		cout << "Didn't find the key." << endl;
+	}
+
 }
 
 int main()
