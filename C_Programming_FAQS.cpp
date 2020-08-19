@@ -407,6 +407,30 @@ void test_imitate_function() {
 	cout << endl;
 }
 
+// STL算法
+#include <algorithm>
+#include <functional>
+#include <numeric>
+
+void test_stl_algorithm() {
+	int ones[] = { 1, 2, 3, 4, 5 };
+	int twos[] = { 10, 20, 30, 40, 50 };
+	int results[5];
+	transform(ones, ones + 5, twos, results, std::plus<int>()); // 数组元素依次相加并返回
+	for_each(results, results + 5,
+		[](int a)->void { // 中括号接受外部参数，小括号是内部参数，花括号是函数体
+		cout << a << endl; }); // lambda表达式（匿名函数）
+	cout << endl;
+
+	// find
+	int arr[] = { 0, 1, 2, 3, 3, 4, 4, 5, 6, 6, 7, 7, 7, 8 };
+	int len = sizeof(arr) / sizeof(arr[0]);
+	vector<int> iA(arr + 2, arr + 6);   // {2,3,3,4}
+	cout << std::count(arr, arr + len, 6) << endl; // 统计6的个数
+	cout << std::count_if(arr, arr + len, std::bind2nd(std::less<int>(), 7)) << endl; // 统计 < 7 的个数
+	cout << std::binary_search(arr, arr + len, 9) << endl;   // 9找不到
+	cout << *std::search(arr, arr + len, iA.begin(), iA.end()) << endl; // 查找子序列
+}
 
 int main()
 {
@@ -415,6 +439,7 @@ int main()
 	test_STL();
 	test_map();
 	test_imitate_function();
+	test_stl_algorithm();
 	return 0;
 }
 
