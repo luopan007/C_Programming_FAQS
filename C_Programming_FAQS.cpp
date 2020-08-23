@@ -457,17 +457,15 @@ void selectionSort(T arr[], int n)
 
 void testSelectionSort() {
 	int arr[10] = { 10,9,8,7,6,5,4,3,2,1 };
-	selectionSort(arr, 10);
-	SortTestHelper::printArray(arr,10);
+	SortTestHelper::testSort("Selection Sort", selectionSort, arr, 10);
 	
 	Student students[4] = { {"D",98},{"C",100},{"B",88},{"A",88} };
 	selectionSort(students, 4);
-	SortTestHelper::printArray(students, 4);
+	SortTestHelper::testSort("Selection Sort", selectionSort, students, 4);
 
-	int arrayLenght = 10000;
+	int arrayLenght = 100000;
 	int *array = SortTestHelper::generateRandomArray(arrayLenght, 0, arrayLenght);
-	selectionSort(array, arrayLenght);
-	SortTestHelper::printArray(array, arrayLenght);
+	SortTestHelper::testSort("Selection Sort", selectionSort, array, arrayLenght);
 	delete[] array;
 }
 
