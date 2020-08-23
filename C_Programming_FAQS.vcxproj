@@ -154,6 +154,7 @@
     <ClCompile Include="C_Programming_FAQS.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SortFunction.h" />
     <ClInclude Include="SortTestHelper.h" />
     <ClInclude Include="Student.h" />
   </ItemGroup>

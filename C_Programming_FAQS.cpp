@@ -432,40 +432,22 @@ void test_stl_algorithm() {
 	cout << *std::search(arr, arr + len, iA.begin(), iA.end()) << endl; // 查找子序列
 }
 
-// 1.选择算法O(n²)
-template<typename T>
-void selectionSort(T arr[], int n)
-{
-	for (int i = 0; i < n; ++i)
-	{
-		// 寻找[i,n)区间里面的最小值
-		int minIndex = i;
-		for (int j = i + 1; j < n; ++j)
-		{
-			if (arr[j] < arr[minIndex]) 
-			{
-				minIndex = j;
-			}
-		}
+// 1.排序算法
 
-	std::swap(arr[i], arr[minIndex]);
-	}
-}
-
+#include "SortFunction.h"
 #include "Student.h"
 #include "SortTestHelper.h"
 
-void testSelectionSort() {
+void testSort() {
 	int arr[10] = { 10,9,8,7,6,5,4,3,2,1 };
-	SortTestHelper::testSort("Selection Sort", selectionSort, arr, 10);
+	SortTestHelper::testSort("Selection Sort", SortFunction::selectionSort, arr, 10);
 	
 	Student students[4] = { {"D",98},{"C",100},{"B",88},{"A",88} };
-	selectionSort(students, 4);
-	SortTestHelper::testSort("Selection Sort", selectionSort, students, 4);
+	SortTestHelper::testSort("Selection Sort", SortFunction::selectionSort, students, 4);
 
 	int arrayLenght = 100000;
 	int *array = SortTestHelper::generateRandomArray(arrayLenght, 0, arrayLenght);
-	SortTestHelper::testSort("Selection Sort", selectionSort, array, arrayLenght);
+	SortTestHelper::testSort("Selection Sort", SortFunction::selectionSort, array, arrayLenght);
 	delete[] array;
 }
 
@@ -478,7 +460,7 @@ int main()
 	test_map();
 	test_imitate_function();
 	test_stl_algorithm();
-	testSelectionSort();
+	testSort();
 
 	return 0;
 }
