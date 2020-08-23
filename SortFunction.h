@@ -186,4 +186,59 @@ namespace SortFunction {
 	void quickSort(T arr[], int length) {
 		__quickSort(arr, 0, length - 1);
 	}
+
+	// 辅助函数 - 对数组进行分组
+	// 对数组 arr[left...right]进行分组，使得arr[left...part] < arr[part] 且 arr[part+1...right] > arr[part]
+	template<typename T>
+	int __partition2(T arr[], int left, int right) {
+		std::swap(arr[left], arr[std::rand() % (right - left + 1) + left]);
+
+		T element = arr[left];
+
+		int i = left + 1;
+		int j = right;
+		while (true)
+		{
+			while (i <= right && arr[i] < element) {
+				i++;
+			}
+
+			while (j >= left + 1 && arr[j] > element)
+			{
+				j--;
+			}
+
+			if (i > j) {
+				break;
+			}
+
+			std::swap(arr[i], arr[j]);
+			i++; 
+			j--;
+		}
+		std::swap(arr[left], arr[j]);
+		return j;
+	}
+
+	// 辅助函数 - 快速排序
+	template<typename T>
+	void __quickSort2(T arr[], int left, int right) {
+		if (left >= right) {
+			return;
+		}
+		// 对于所有的高级排序算法，都可使用插入排序优化
+		// 见归并算法的优化2
+
+		int part = __partition2(arr, left, right);
+		__quickSort2(arr, left, part);
+		__quickSort2(arr, part + 1, right);
+	}
+
+	// 4.1 快速排序 -- 第二版 （双路快排）
+	template<typename T>
+	void quickSort2(T arr[], int length) {
+		__quickSort2(arr, 0, length - 1);
+	}
+
+
 }
