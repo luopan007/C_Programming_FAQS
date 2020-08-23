@@ -151,7 +151,9 @@ namespace SortFunction {
 	// 对数组 arr[left...right]进行分组，使得arr[left...part] < arr[part] 且 arr[part+1...right] > arr[part]
 	template<typename T>
 	int __partition(T arr[], int left, int right) {
-		T v = arr[left]; // 随机选择 arr[part]值为数组的第一个元素
+		T v = arr[left]; // 固定选择 arr[part]值为数组的第一个元素 - 对于完全有序的数组会退化成 O(n²)
+
+		// 优化2：随机选择锚点
 
 		int j = left;
 		for (int i = left + 1; i <= right; i++) {
