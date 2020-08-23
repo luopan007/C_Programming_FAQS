@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include <ctime>
+
 using namespace std;
 
 namespace SortFunction {
@@ -240,5 +242,47 @@ namespace SortFunction {
 		__quickSort2(arr, 0, length - 1);
 	}
 
+	// 三路快排辅助函数
+	template<typename T>
+	void __quickSort3(T arr[], int left, int right) {
+		// 当处理元素少于16个时，我们使用插入排序
+		if (right - left) {
+			__insertionSort(arr, left, right);
+		}
 
+		std::swap(arr[left], arr[std::rand() % (right - left + 1) + left]);
+
+		T element = arr[left];
+
+		int lessElementIndex = left;
+		int greatElementIndex = right + 1;
+		int i = left + 1;
+
+		while (i < greatElementIndex)
+		{
+			if (arr[i] < element) {
+				std::swap(arr[i], arr[lessElementIndex + 1]);
+				lessElementIndex++;
+				i++;
+			}
+			else if (arr[i] > element){
+				std::swap(arr[i], arr[greatElementIndex - 1]);
+				greatElementIndex--;
+			}
+			else {
+				i++;
+			}
+		}
+		std::swap(arr[left], arr[lessElementIndex]);
+
+		__quickSort3(arr, left, lessElementIndex - 1);
+		__quickSort3(arr, greatElementIndex, right);
+	}
+
+	// 4.2 快速排序 -- 第三版 （三路快排）: 数组分为三块（小于锚点值，等于锚定值，大于锚定值）
+	template<typename T>
+	void quickSort3(T arr[], int length) {
+		srand(time(NULL));
+		__quickSort3(arr, 0, length - 1);
+	}
 }

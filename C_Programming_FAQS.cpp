@@ -453,6 +453,7 @@ void testSort() {
 	int *array5 = SortTestHelper::copyIntArray(array, arrayLenght);
 	int *array6 = SortTestHelper::copyIntArray(array, arrayLenght);
 	int *array7 = SortTestHelper::copyIntArray(array, arrayLenght);
+	int *array8 = SortTestHelper::copyIntArray(array, arrayLenght);
 	SortTestHelper::testSort("Selection Sort", SortFunction::selectionSort, array, arrayLenght);
 	SortTestHelper::testSort("Insertion_Swap Sort", SortFunction::insertionSort_Swap, array2, arrayLenght);
 	SortTestHelper::testSort("Insertion_Move Sort", SortFunction::insertionSort_Move, array3, arrayLenght);
@@ -460,6 +461,7 @@ void testSort() {
 	SortTestHelper::testSort("MergeSort", SortFunction::mergeSort, array5, arrayLenght);
 	SortTestHelper::testSort("QuickSort", SortFunction::quickSort, array6, arrayLenght);
 	SortTestHelper::testSort("QuickSort2", SortFunction::quickSort2, array7, arrayLenght);
+	SortTestHelper::testSort("QuickSort3", SortFunction::quickSort3, array8, arrayLenght);
 	delete[] array;
 	delete[] array2;
 	delete[] array3;
@@ -467,6 +469,7 @@ void testSort() {
 	delete[] array5;
 	delete[] array6;
 	delete[] array7;
+	delete[] array8;
 }
 
 
