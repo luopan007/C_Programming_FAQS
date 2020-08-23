@@ -452,7 +452,24 @@ void selectionSort(T arr[], int n)
 	}
 }
 
+#include "Student.h"
+#include "SortTestHelper.h"
 
+void testSelectionSort() {
+	int arr[10] = { 10,9,8,7,6,5,4,3,2,1 };
+	selectionSort(arr, 10);
+	SortTestHelper::printArray(arr,10);
+	
+	Student students[4] = { {"D",98},{"C",100},{"B",88},{"A",88} };
+	selectionSort(students, 4);
+	SortTestHelper::printArray(students, 4);
+
+	int arrayLenght = 10000;
+	int *array = SortTestHelper::generateRandomArray(arrayLenght, 0, arrayLenght);
+	selectionSort(array, arrayLenght);
+	SortTestHelper::printArray(array, arrayLenght);
+	delete[] array;
+}
 
 
 int main()
@@ -463,13 +480,8 @@ int main()
 	test_map();
 	test_imitate_function();
 	test_stl_algorithm();
+	testSelectionSort();
 
-	int arr[10] = { 10,9,8,7,6,5,4,3,2,1 };
-	selectionSort(arr, 10);
-	for (int i = 0; i < 10; i++)
-	{
-		std::cout << arr[i] << " ";
-	}
 	return 0;
 }
 
