@@ -171,6 +171,8 @@ namespace SortFunction {
 		if (left >= right) {
 			return;
 		}
+		// 对于所有的高级排序算法，都可使用插入排序优化
+		// 见归并算法的优化2
 
 		int part = __partition(arr, left, right);
 		__quickSort(arr, left, part);
