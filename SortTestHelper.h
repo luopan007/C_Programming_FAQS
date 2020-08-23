@@ -22,6 +22,25 @@ namespace SortTestHelper {
 		return result;
 	}
 
+	// 生成一个几乎有序的数组
+	int* generateNearlyOrderedArray(int length, int swapTimes) {
+		int *result = new int[length];
+		for (int i = 0; i < length; i++)
+		{
+			result[i] = i;
+		}
+		
+		srand(time(NULL));
+		for (int i = 0; i < swapTimes; i++)
+		{
+			int posx = rand() % length;
+			int posy = rand() % length;
+			std::swap(result[posx], result[posy]);
+		}
+
+		return result;
+	}
+
 	// 检验数组是否为从小到大的有序数组
 	template<typename T>
 	bool isSort(T arr[], int n) {
