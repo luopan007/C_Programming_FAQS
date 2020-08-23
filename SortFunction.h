@@ -248,6 +248,7 @@ namespace SortFunction {
 		// 当处理元素少于16个时，我们使用插入排序
 		if (right - left) {
 			__insertionSort(arr, left, right);
+			return;
 		}
 
 		std::swap(arr[left], arr[std::rand() % (right - left + 1) + left]);
