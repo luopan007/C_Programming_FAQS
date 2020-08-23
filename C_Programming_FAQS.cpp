@@ -432,6 +432,29 @@ void test_stl_algorithm() {
 	cout << *std::search(arr, arr + len, iA.begin(), iA.end()) << endl; // 查找子序列
 }
 
+// 1.选择算法O(n²)
+template<typename T>
+void selectionSort(T arr[], int n)
+{
+	for (int i = 0; i < n; ++i)
+	{
+		// 寻找[i,n)区间里面的最小值
+		int minIndex = i;
+		for (int j = i + 1; j < n; ++j)
+		{
+			if (arr[j] < arr[minIndex]) 
+			{
+				minIndex = j;
+			}
+		}
+
+	std::swap(arr[i], arr[minIndex]);
+	}
+}
+
+
+
+
 int main()
 {
 	test_class_size();
@@ -440,6 +463,13 @@ int main()
 	test_map();
 	test_imitate_function();
 	test_stl_algorithm();
+
+	int arr[10] = { 10,9,8,7,6,5,4,3,2,1 };
+	selectionSort(arr, 10);
+	for (int i = 0; i < 10; i++)
+	{
+		std::cout << arr[i] << " ";
+	}
 	return 0;
 }
 
