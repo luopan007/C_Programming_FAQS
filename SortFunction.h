@@ -24,9 +24,9 @@ namespace SortFunction {
 		}
 	}
 
-	// 2. 插入排序 - 就像打扑克取牌一样
+	// 2. 插入排序 - 就像打扑克取牌一样 - 挨个交换
 	template<typename T>
-	void insertionSort(T arr[], int length) {
+	void insertionSort_Swap(T arr[], int length) {
 		
 		for (int i = 1; i < length; i++)
 		{
@@ -40,6 +40,29 @@ namespace SortFunction {
 					break;
 				}
 			}
+		}
+	}
+
+	// 2. 插入排序 - 就像打扑克取牌一样 - 比较赋值
+	template<typename T>
+	void insertionSort_Move(T arr[], int length) {
+
+		for (int i = 1; i < length; i++)
+		{
+			// 记录待排序的元素
+			T element = arr[i];
+			
+			// 待排序元素前面的所有元素都是从小到大的循序，下标 j 保存最后一个比待排序元素大的元素下标
+			int j;
+
+			// 循环继续的条件是：待排序元素存在比其大的元素
+			for (j = i; j > 0 && arr[j-1] > element; j--)
+			{
+				arr[j] = arr[j - 1]; // 把比待排序元素大的元素往后移动
+			}
+
+			// 经过前面的依次后移，j位置是空的，需要将待排序元素填入此位置
+			arr[j] = element;
 		}
 	}
 }

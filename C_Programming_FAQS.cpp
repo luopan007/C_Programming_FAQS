@@ -448,10 +448,13 @@ void testSort() {
 	int arrayLenght = 10000;
 	int *array = SortTestHelper::generateRandomArray(arrayLenght, 0, arrayLenght);
 	int *array2 = SortTestHelper::copyIntArray(array, arrayLenght);
+	int *array3 = SortTestHelper::copyIntArray(array, arrayLenght);
 	SortTestHelper::testSort("Selection Sort", SortFunction::selectionSort, array, arrayLenght);
-	SortTestHelper::testSort("Insertion Sort", SortFunction::insertionSort, array2, arrayLenght);
+	SortTestHelper::testSort("Insertion_Swap Sort", SortFunction::insertionSort_Swap, array2, arrayLenght);
+	SortTestHelper::testSort("Insertion_Move Sort", SortFunction::insertionSort_Move, array2, arrayLenght);
 	delete[] array;
 	delete[] array2;
+	delete[] array3;
 }
 
 
