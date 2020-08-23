@@ -65,6 +65,20 @@ namespace SortFunction {
 			arr[j] = element;
 		}
 	}
+
+	// 2.1 插入排序 -- 针对某个区间进行插入排序
+	template<typename T>
+	void __insertionSort(T arr[], int left, int right) {
+		for (int i = left +1; i <= right; i++)
+		{
+			T element = arr[i];
+			int j;
+			for (j = i; j > left && arr[j - 1] > element; j--) {
+				arr[j] = arr[j - 1];
+			}
+			arr[j] = element;
+		}
+	}
 	
 	// 辅助函数：合并两个有序的子数组
 	template<typename T>
@@ -105,7 +119,13 @@ namespace SortFunction {
 	// 辅助函数：递归使用并归排序，对arr[left...right]的范围进行排序
 	template<typename T>
 	void __mergeSort(T arr[], int left, int right) {
-		if (left >= right) {
+		//if (left >= right) {
+		//	return;
+		//}
+
+		// 优化2：针对数组长度减少到一定长度时，有序的概率很高，可以采用插入排序
+		if (right - left <= 15) {
+			__insertionSort(arr, left, right);
 			return;
 		}
 
