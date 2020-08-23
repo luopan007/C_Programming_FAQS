@@ -54,4 +54,10 @@ namespace SortTestHelper {
 		}
 		cout << endl;
 	}
+
+	int* copyIntArray(int a[], int n) {
+		int* result = new int[n];
+		copy(a, a + n, result);
+		return result;
+	}
 }
