@@ -115,7 +115,10 @@ namespace SortFunction {
 
 		// 经过上述递归后，左边和右边必然是有序的子数组
 		// 接下来需要使用合并函数合并
-		__merge(arr, left, mid, right);
+		// 优化1：只有左边的最大的元素大于右边最小的元素才需要merge操作
+		if (arr[mid] > arr[mid + 1]) {
+			__merge(arr, left, mid, right);
+		}
 	}
 
 	// 3. 归并排序O(n*logn)
