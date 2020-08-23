@@ -451,16 +451,19 @@ void testSort() {
 	int *array3 = SortTestHelper::copyIntArray(array, arrayLenght);
 	int *array4 = SortTestHelper::generateNearlyOrderedArray(arrayLenght, 100);
 	int *array5 = SortTestHelper::copyIntArray(array, arrayLenght);
+	int *array6 = SortTestHelper::copyIntArray(array, arrayLenght);
 	SortTestHelper::testSort("Selection Sort", SortFunction::selectionSort, array, arrayLenght);
 	SortTestHelper::testSort("Insertion_Swap Sort", SortFunction::insertionSort_Swap, array2, arrayLenght);
 	SortTestHelper::testSort("Insertion_Move Sort", SortFunction::insertionSort_Move, array3, arrayLenght);
 	SortTestHelper::testSort("Insertion_Move Sort", SortFunction::insertionSort_Move, array4, arrayLenght);
 	SortTestHelper::testSort("Merge Sort", SortFunction::mergeSort, array5, arrayLenght);
+	SortTestHelper::testSort("Quick Sort", SortFunction::quickSort, array6, arrayLenght);
 	delete[] array;
 	delete[] array2;
 	delete[] array3;
 	delete[] array4;
 	delete[] array5;
+	delete[] array6;
 }
 
 

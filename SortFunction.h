@@ -146,4 +146,40 @@ namespace SortFunction {
 	void mergeSort(T arr[], int n) {
 		__mergeSort(arr, 0, n - 1);
 	}
+
+	// 辅助函数 - 对数组进行分组
+	// 对数组 arr[left...right]进行分组，使得arr[left...part] < arr[part] 且 arr[part+1...right] > arr[part]
+	template<typename T>
+	int __partition(T arr[], int left, int right) {
+		T v = arr[left]; // 随机选择 arr[part]值为数组的第一个元素
+
+		int j = left;
+		for (int i = left + 1; i <= right; i++) {
+			if (arr[i] < v) {
+			std::swap(arr[j + 1], arr[i]);
+			j++;
+			}
+		}
+
+		std::swap(arr[left], arr[j]);
+		return j;
+	}
+
+	// 辅助函数 - 快速排序
+	template<typename T>
+	void __quickSort(T arr[], int left, int right) {
+		if (left >= right) {
+			return;
+		}
+
+		int part = __partition(arr, left, right);
+		__quickSort(arr, left, part);
+		__quickSort(arr, part + 1, right);
+	}
+
+	// 4. 快速排序 -- 第一版
+	template<typename T>
+	void quickSort(T arr[], int length) {
+		__quickSort(arr, 0, length - 1);
+	}
 }
